@@ -1,0 +1,116 @@
+<% layout("/layouts/boilerplate") %>
+<style>
+   .b {
+        font-family: Arial, sans-serif;
+        background-color: #f4f7fc;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+        background-color: #f4f7fc;
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    /* Form Container Styling */
+    #generate-certificate-form {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+        
+       
+    }
+
+    /* Input Field Styling */
+    #generate-certificate-form input,
+    #generate-certificate-form select {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        box-sizing: border-box;
+    }
+
+    /* Button Styling */
+    #generate-certificate-form button {
+        background-color:rgb(56, 159, 200);
+        color: white;
+        border: none;
+        padding: 12px;
+        font-size: 16px;
+        width: 100%;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+    }
+
+    #generate-certificate-form button:hover {
+        background-color:#306a81;
+    }
+
+    /* Select Box Styling */
+    #generate-certificate-form select {
+        background-color: #f9f9f9;
+    }
+
+    /* Placeholder Styling */
+    input::placeholder {
+        color: #aaa;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 600px) {
+        #generate-certificate-form {
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+    }
+</style>
+
+<body>
+    <div class="b">
+        <div id="generate-certificate-form">
+            <h1>Generate Certificate</h1>
+            <form>
+                <input type="text" id="teamName" name="teamName" placeholder="Enter Team Name" required>
+                <select id="eventId" name="eventId" required>
+                    <option value="">Select Event</option>
+                    <% events.forEach(event => { %>
+                        <option value="<%= event._id %>"><%= event.name %> - <%= event.category %></option>
+                    <% }); %>
+                </select>
+                <button type="button" id="download-pdf">Download Certificate</button>
+            </form>
+        </div>
+    </div>
+    
+
+    <script>
+        document.getElementById('download-pdf').addEventListener('click', function() {
+            const teamName = document.getElementById('teamName').value;
+            const eventId = document.getElementById('eventId').value;
+
+            if (!teamName || !eventId) {
+                alert('Please enter team name and select an event.');
+                return;
+            }
+
+            // Redirect to generate PDF route
+            window.location.href = `/generate-certificate/generate-pdf?teamName=${teamName}&eventId=${eventId}`;
+        });
+    </script>
+</body>

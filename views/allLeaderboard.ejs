@@ -1,0 +1,53 @@
+
+<% layout("/layouts/boilerplate") %>
+<body>
+    <h1>Leaderboard for All Events</h1>
+    <!-- Iterate over the leaderboardData to show event name and teams -->
+    <% leaderboardData.forEach(data => { %>
+        <h2>Leaderboard for Event: <%= data.event.name %></h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Position</th>
+                    <th>Team Name</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% data.teams.forEach((team, index) => { %>
+                    <tr>
+                        <td><%= index + 1 %></td>
+                        <td><%= team.teamName %></td>
+                        <td><%= team.totalScore %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    <% }); %>
+
+    <script>
+        const socket = io();
+
+        // Function to render the leaderboard dynamically
+        function renderLeaderboard(leaderboard) {
+            const leaderboardTable = document.getElementById("leaderboard");
+            leaderboardTable.innerHTML = ""; // Clear the table before updating
+
+            leaderboard.forEach((team, index) => {
+                leaderboardTable.innerHTML += `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td>${team.name}</td>
+                        <td>${team.score}</td>
+                    </tr>
+                `;
+            });
+        }
+
+        // Listen for updates from the server
+        socket.on("updateLeaderboard", (leaderboard) => {
+            renderLeaderboard(leaderboard);
+        });
+    </script>
+</body>
+

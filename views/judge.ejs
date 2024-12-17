@@ -1,0 +1,183 @@
+<% layout("/layouts/boilerplate") %>
+<style>
+    /* General page layout */
+ 
+    h1 {
+        text-align: center;
+        color: #002b36;
+        margin-bottom: 30px;
+    }
+
+    /* Team section styling */
+    .team-section {
+        border: 1px solid #ccc;
+        margin-bottom: 20px;
+        padding: 15px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .team-section h2 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .team-section h3 {
+        font-size: 16px;
+        color: #005f73;
+        margin-top: 10px;
+    }
+
+    .status {
+        font-size: 14px;
+        color: #888;
+        margin-left: 15px;
+    }
+
+    /* Button styling */
+    .btn {
+        cursor: pointer;
+        background-color:rgb(56, 159, 200);
+        color: #fff;
+        padding: 6px 12px;
+        border: none;
+        border-radius: 4px;
+        margin-left: 10px;
+        font-size: 14px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+        background-color: rgb(48, 106, 129);;
+    }
+
+    .btn:disabled {
+        background-color: #ddd;
+    }
+
+    /* Form and input fields */
+    form {
+        margin-top: 10px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        font-size: 14px;
+        margin-right: 10px;
+    }
+
+    .form-group input {
+        padding: 6px;
+        width: 60px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    /* Collapse and toggle visibility */
+    .collapse {
+        display: none;
+        margin-top: 10px;
+        padding-left: 20px;
+    }
+
+    /* Leaderboard styling */
+    #leaderboard {
+        margin-top: 30px;
+    }
+
+    #leaderboard li {
+        padding: 8px;
+        background-color: #e0f7fa;
+        margin-bottom: 5px;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    /* Responsive layout for mobile view */
+    @media (max-width: 768px) {
+        .team-section {
+            padding: 10px;
+        }
+
+        .form-group input {
+            width: 100%;
+        }
+    }
+</style>
+
+<body>
+    <h1>Log Scores</h1>
+
+    <% teams.filter(team => !team.evaluated).forEach(team => { %>  
+        <div class="team-section" id="<%= team._id %>">
+            <h2>
+                Team: <%= team.teamName %> | Corporate ID: <%= team.corporateId %> 
+                <span class="status"><%= team.evaluated ? 'Evaluated' : 'Not Evaluated' %></span>
+                <% if (!team.evaluated) { %>
+                    <button class="btn" onclick="toggleMembers('<%= team._id %>')">Toggle Members</button>
+                <% } %>
+            </h2>
+
+            <div id="members-<%= team._id %>" class="collapse">
+                <% if (team.evaluated) { %>
+                    <h3>Evaluated Members:</h3>
+                    <% team.members.forEach(member => { %>
+                        <div>
+                            <span><%= member.name %> (Corporate ID: <%= member.corporateId %>): <strong><%= member.score || 0 %></strong></span>
+                        </div>
+                    <% }) %>
+                    <h4>Total Score: <strong><%= team.totalScore || 0 %></strong></h4>
+                <% } else { %>
+                    <h3>Log Scores:</h3>
+                    <form action="/judge/score" method="POST">
+                        <% team.members.forEach(member => { %>
+                            <div class="form-group">
+                                <label for="score_<%= member._id %>"><%= member.name %> (Corporate ID: <%= member.corporateId %>): </label>
+                                <input type="number" name="scores[<%= member._id %>]" min="1" max="5" id="score_<%= member._id %>" required>
+                            </div>
+                        <% }) %>
+                        <input type="hidden" name="teamId" value="<%= team._id %>">
+                        <button type="submit" class="btn">Log Scores</button>
+                    </form>
+                <% } %>
+            </div>
+        </div>
+    <% }) %>
+
+    <ul id="leaderboard">
+        <!-- Real-time leaderboard will be updated here -->
+    </ul>
+
+    <script>
+        // Function to toggle the visibility of team members
+        function toggleMembers(teamId) {
+            const membersDiv = document.getElementById(`members-${teamId}`);
+            membersDiv.classList.toggle('collapse');
+        }
+
+        // Socket.io connection to listen for the 'teamEvaluated' event
+        const socket = io();  // Connect to the Socket.io server
+
+        socket.on('teamEvaluated', (teamId) => {
+            console.log('Received teamEvaluated event for teamId:', teamId);
+
+            // Find the team element by its ID in the DOM
+            const teamElement = document.getElementById(teamId);
+
+            if (teamElement) {
+                // Remove the evaluated team from the page
+                teamElement.remove();
+                console.log(`Removed team with ID ${teamId} from the page.`);
+            } else {
+                console.error(`No team found with ID ${teamId}`);
+            }
+        });
+    </script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/judges.js" defer></script>
+</body>
+

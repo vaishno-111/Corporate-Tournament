@@ -1,0 +1,390 @@
+
+
+  #nav {
+    background: linear-gradient(to bottom right, rgb(56, 159, 200)
+    , rgba(255, 255, 255, 0.2)); /* Dewy effect */
+    backdrop-filter: blur(15px); /* Hazy effect */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.9); /* Subtle shadow */
+    position: relative; /* Establishes a positioning context for child elements */
+    z-index: 1000; /* Ensure navbar is above other elements */
+}
+
+/* Improved Dropdown Menu UI */
+.dropdown-menu {
+    background-color: rgba(255, 255, 255, 2.4); /* Semi-transparent white background for a glass-like effect */
+    backdrop-filter: blur(10px); /* Blurred background for dropdown */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Stronger shadow effect */
+    border-radius: 10px; /* Rounded corners */
+    padding: 10px 15px; /* Padding for a clean, modern look */
+    z-index: 1050; /* Ensure dropdown menu is above the navbar */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Light border for glassmorphism effect */
+}
+
+/* Dropdown item hover effect */
+.dropdown-item {
+    padding: 10px 15px; /* More padding for larger clickable areas */
+    border-radius: 5px; /* Rounded edges for items */
+    transition: background-color 0.3s ease; /* Smooth transition effect */
+}
+
+/* Hover state for dropdown items */
+.dropdown-item:hover {
+    background-color: rgba(102, 0, 153, 0.1); /* Subtle hover effect with semi-transparent purple */
+    color: #660099; /* Accent color for text on hover */
+}
+
+/* Active dropdown item state */
+.dropdown-item.active {
+    background-color: rgba(102, 0, 153, 0.2); /* Active state with stronger purple background */
+    color: white; /* White text for better contrast */
+}
+
+/* Media query to improve responsiveness */
+@media (max-width: 768px) {
+    .dropdown-menu {
+        width: 100%; /* Full width dropdown on smaller screens */
+    }
+    .dropdown-item {
+        text-align: center; /* Center text on smaller screens for better readability */
+    }
+}
+
+
+.fa-solid fa-trophy {
+    color:#10002b ; /* Replace with your desired color */
+}
+
+/* Uppersec styles */
+.uppersec {
+    padding: 30px; /* Add more padding for breathing space */
+    background:#4bb4ce;
+
+    
+    backdrop-filter: blur(20px); /* Increased haze for a more elegant feel */
+    display: flex;
+    justify-content: space-between; /* Spread the content more */
+    align-items: center;
+    border-radius: 25px; /* Smooth rounded corners for the whole section */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    width: 100%;
+    max-width: 100vw; /* Prevent the width from exceeding the viewport */
+    overflow-x: hidden; /* Hide any potential overflow */
+    margin: 20px auto; /* Centered section with margin */
+    transition: all 0.3s ease-in-out; /* Smooth transition on hover */
+    
+    background-size: cover; /* Ensure the image covers the entire area */
+    background-position: center; /* Center the image within the div */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+}
+/* Import a new font style for 'Sahaya' */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap'); /* Example font */
+
+/* Styles for the title 'Sahaya' */
+.custom-font {
+    font-family: 'Playfair Display', serif; /* Apply the imported font */
+    font-size: 5rem; /* Adjust size */
+    color: #f12320; /* Gold-like color */
+    letter-spacing: 2px; /* Space between letters */
+    text-transform: uppercase; /* Uppercase for emphasis */
+    
+    /* 3D shadow effect */
+    text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.3), 
+                 6px 6px 5px rgba(0, 0, 0, 0.2), 
+                 9px 9px 10px rgba(0, 0, 0, 0.1); /* Layers of shadow for depth */
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Hover effect for 'Sahaya' */
+.custom-font:hover {
+    transform: translateY(-5px); /* Slightly raise the text on hover */
+}
+
+/* Styles for the tagline */
+.tagline {
+    font-family: 'Roboto', sans-serif; /* Apply a modern sans-serif font */
+    font-size: 1.8rem; /* Larger font size for tagline */
+    color: #000000; /* Dark purple for contrast */
+    letter-spacing: 1px; /* Slight letter spacing for tagline */
+    font-style: italic; /* Add some elegance with italics */
+    
+    /* 3D shadow effect */
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2), 
+                 4px 4px 3px rgba(0, 0, 0, 0.1); /* Layers of shadow for depth */
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Hover effect for tagline */
+.tagline:hover {
+    transform: translateY(-3px); /* Slightly raise the text on hover */
+}
+
+
+.uppersec:hover {
+    transform: scale(1.02); /* Slight zoom effect on hover */
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+/* Flex container inside uppersec */
+.d-flex {
+    width: 100%;
+    max-width: 1200px; /* Control max width for larger screens */
+}
+
+/* Content area styling */
+.flex-grow-1 {
+    margin-right: 30px; /* More margin for spacing */
+    color: rgb(255, 255, 255); /* Darker shade for text */
+    font-size: 1.2rem; /* Larger font size for emphasis */
+    font-weight: 700; /* Bolder text */
+    line-height: 1.6; /* More line height for readability */
+}
+
+/* Image area */
+.flex-shrink-0 img {
+    max-width: 350px; /* Set a max width for the image */
+    height: auto;
+    border-radius: 20%; /* Rounded image corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Soft shadow on the image */
+    transition: transform 0.3s ease; /* Smooth image hover effect */
+}
+
+.flex-shrink-0 img:hover {
+    transform: scale(1.05); /* Slight zoom on image hover */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .uppersec {
+        flex-direction: column; /* Stack content on smaller screens */
+        align-items: center;
+        padding: 20px;
+    }
+
+    .flex-grow-1 {
+        margin-bottom: 20px; /* Add space between text and image */
+        text-align: center; /* Center text on smaller screens */
+    }
+
+    .flex-shrink-0 img {
+        max-width: 100%; /* Full width for image on smaller screens */
+    }
+}
+
+/* Body overflow fix */
+body {
+    overflow-x: hidden; /* Prevent horizontal scrolling on the entire page */
+}
+
+/* General support div styling */
+.support {
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 1200px; /* Max width to prevent horizontal scrolling */
+    position: relative;
+    overflow: hidden;
+
+}
+
+/* Support title styling */
+.support-title {
+    font-size: 2.75rem; /* Increase the size of the title */
+    font-weight: bold; /* Make the title bold */
+    color: #001233; /* Gold-like color */
+    text-align: center; /* Center align the title */
+    text-shadow: 2px 2px 5px rgba(4, 4, 4, 0.731); /* Add a subtle shadow for depth */
+}
+
+/* Flex container for cards */
+.support .d-flex {
+    display: flex; /* Use flex display */
+    flex-wrap: nowrap; /* Prevent wrapping to keep cards in a single row */
+    justify-content: center; /* Center the cards horizontally */
+}
+
+/* Blurred video background */
+.video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* Behind content */
+    filter: blur(8px); /* Blur effect on the background video */
+    opacity: 0.7; /* Optional: reduce the opacity for better text visibility */
+}
+
+/* Ensure that the text stays on top of the video */
+.support h1, .support .card {
+    z-index: 1;
+    position: relative;
+}
+
+/* Card Styling */
+.card {
+    background: linear-gradient(to bottom right, rgb(56, 159, 200)
+    , rgba(255, 255, 255, 0.2)); /* Dewy effect */
+    backdrop-filter: blur(10px); /* Adds the foggy blur effect */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Light border for definition */
+    border-radius: 15px; /* Softens the corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    padding: 20px;
+    color: #020000; /* Dark text to contrast background */
+    width: 300px;
+    margin: 20px auto;
+    text-align: center;
+    transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+/* Card title styling */
+.card-title {
+    font-size: 1.5rem; /* Adjust card title size */
+    font-weight: bold; /* Make card title bold */
+    color: #001233; /* Gold-like color for the title */
+    
+}
+
+/* Card text styling */
+.card-text {
+    font-size: 1rem; /* Adjust card text size */
+    color: #230c33; /* Dark purple for the text */
+    line-height: 1.5; /* Improve readability */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Slightly enlarges on hover */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.519);
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .support .d-flex {
+        flex-direction: row; /* Maintain horizontal layout on small screens */
+        overflow-x: auto; /* Allow horizontal scrolling if needed */
+        flex-wrap: wrap;
+    }
+
+    .card {
+        margin: 10px; /* Space between cards */
+        flex: 0 0 auto; /* Prevent cards from shrinking */
+        max-width: 100%; /* Ensure full width on smaller devices */
+    }
+}
+
+.card-link {
+    text-decoration: none; /* Remove link underline */
+    color: inherit; /* Inherit text color */
+    display: block; /* Make the link fill the card */
+}
+
+/* Hide the internal anchor tag */
+.d-none {
+    display: none;
+}
+
+
+
+
+.facts {
+    position: relative; /* To position the pseudo-element properly */
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 1200px;
+    background-color: rgba(255, 255, 255, 0.3); /* Add a glassy white overlay */
+    backdrop-filter: blur(10px); /* Apply the blur effect to the background */
+    min-height: 300px;
+    border-radius: 10px; /* Rounded corners for a glassy effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    z-index: 1; /* Ensure content is above the pseudo-element */
+}
+
+.facts::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/media/WhatsApp Image 2024-10-27 at 07.24.17_30cf8386.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(15px); /* Blur the background image */
+    opacity: 1.0; /* Adjust the opacity for a more glassy effect */
+    z-index: -1; /* Place the image behind the content */
+    border-radius: 10px; /* Match border radius for consistency */
+}
+
+/* Flex container for cards */
+.facts .d-flex {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .facts .d-flex {
+        flex-direction: row;
+        overflow-x: auto;
+        flex-wrap: wrap;
+    }
+
+    .card {
+        margin: 10px;
+        flex: 0 0 auto;
+        max-width: 100%;
+    }
+}
+
+/*----------------registration page---------------------------------*/
+.btn-register {
+    background-color:rgb(56, 159, 200);
+    color: white; /* White text for contrast */
+    border: none; /* Remove border */
+}
+
+.btn-register:hover {
+    background-color:#389FC8; /* Dewy effect *//* Darker pink on hover */
+}
+
+
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: rgb(56, 159, 200);
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+.team-section {
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+.collapse {
+    display: none;
+}
+.btn {
+    cursor: pointer;
+    margin: 5px 0;
+    border: #001233;
+}

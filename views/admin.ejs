@@ -1,0 +1,39 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+    
+    <div class="container mt-5">
+        <h1 class="text-center">Create Event</h1>
+        <form action="/admin/createEvent" method="post" id="event-form" class="bg-light p-4 border rounded">
+            <div class="form-group">
+                <label for="eventName">Event Name</label>
+                <input type="text" class="form-control" name="name" placeholder="Event Name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="eventCategory">Category</label>
+                <input type="text" class="form-control" name="category" placeholder="Event Category" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="eventDate">Date</label>
+                <input type="date" class="form-control" name="date" required>
+            </div>
+
+            <div class="text-center mt-3">
+                <button type="submit" class="btn btn-register mb-3">Create Event</button>
+            </div>
+        </form>
+
+        <div id="event-registrations" class="mt-4">
+            <!-- Real-time event updates will be shown here -->
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+
